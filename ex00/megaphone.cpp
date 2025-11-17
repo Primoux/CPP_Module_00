@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 08:49:11 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/17 10:28:44 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/11/17 13:25:26 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	ft_to_upper(std::string &str)
 {
-	for (int i = 0; i < str.size(); i++)
-	{
+	for (size_t i = 0; i < str.size(); i++)
 		str[i] = std::toupper(str[i]);
-	}
 }
 
 int	main(int argc, char **argv)
