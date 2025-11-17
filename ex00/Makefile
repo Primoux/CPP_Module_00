@@ -1,24 +1,21 @@
-.PHONY : all
+.PHONY : all re fclean clean
 
-NAME	= megaphone
+NAME			= megaphone
 
-MAKEFLAGS	+= -j $$(nproc)
+MAKEFLAGS		+= -j $$(nproc)
 
-CC	= c++
-CFLAGS	= -std=c++98 -Wall -Wextra -Werror
-DEPS		=	-MMD -MP
+CC				= c++
+CFLAGS			= -std=c++98 -Wall -Wextra -Werror
+DEPS			= -MMD -MP
 
-OBJ_DIR	= .build/
-INCLUDE_DIR = inc/
-INCLUDES = -I $(INCLUDE_DIR)
+OBJ_DIR			= .build/
+INCLUDE_DIR		= inc/
+INCLUDES 		= -I $(INCLUDE_DIR)
 
+SRCS			= megaphone.cpp
 
-
-
-SRCS	= megaphone.cpp
-
-OBJS	= $(patsubst %.cpp,$(OBJ_DIR)%.o,$(SRCS))
-DEPENDENCIES	=	$(OBJS:.o=.d)
+OBJS			= $(patsubst %.cpp,$(OBJ_DIR)%.o,$(SRCS))
+DEPENDENCIES	= $(OBJS:.o=.d)
 
 all: $(NAME) 
 
@@ -32,7 +29,7 @@ $(OBJ_DIR)%.o: %.cpp
 -include $(DEPENDENCIES)
 
 re: fclean
-	$(MAKE)
+	$(MAKE) --no-print-directory
 
 clean:
 	rm -rf $(OBJ_DIR)
