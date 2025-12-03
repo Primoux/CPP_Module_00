@@ -6,17 +6,11 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 08:49:11 by enchevri          #+#    #+#             */
-/*   Updated: 2025/11/17 13:25:26 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/12/03 13:07:51 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-
-void	ft_to_upper(std::string &str)
-{
-	for (size_t i = 0; i < str.size(); i++)
-		str[i] = std::toupper(str[i]);
-}
 
 int	main(int argc, char **argv)
 {
@@ -32,7 +26,8 @@ int	main(int argc, char **argv)
 		std::string str = argv[i];
 		if (!str.empty())
 		{
-			ft_to_upper(str);
+			for (size_t i = 0; i < str.size(); i++)
+				str[i] = std::toupper(str[i]);
 			std::cout << str;
 		}
 	}
