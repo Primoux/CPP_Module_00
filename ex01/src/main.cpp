@@ -3,26 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 15:35:54 by enchevri          #+#    #+#             */
-/*   Updated: 2025/12/16 20:45:57 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/12/17 15:22:59 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <cstdlib>
 #include <iostream>
+#include <sstream>
 #include <stdio.h>
+#include <string>
 
-void search(PhoneBook phoneBook)
+void	search(PhoneBook phoneBook)
 {
+	int	i;
+
 	std::system("clear");
 	if (phoneBook.printPhoneBook() == 1)
-		return;
+		return ;
 	std::cout << "Enter the index of the contact [0]-[8]\n";
 	std::string index;
 	std::cin >> index;
+	std::system("clear");
+	std::stringstream ss(index);
+	if ((ss >> i).fail() || !ss.eof())
+	{
+		std::cout << "Invalid index." << std::endl;
+		return ;
+	}
+	if (i < 0 || i > 8)
+	{
+		std::cout << "Index out of range." << std::endl;
+		return ;
+	}
+	phoneBook.printPhoneBook(i);
 }
 
 int	add(PhoneBook &phoneBook)

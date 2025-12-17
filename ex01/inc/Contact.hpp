@@ -2,6 +2,7 @@
 #define CONTACT_HPP
 
 #include <iostream>
+#include <iomanip>
 
 class Contact
 {
@@ -16,7 +17,9 @@ class Contact
 		Contact(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber,std::string darkestSecret);
 		Contact();
 		~Contact();
-		void printContact();
+		void printContactRow(int index);
+		void printContactFull();
+		std::string truncate(std::string str, size_t width);
 };
 
 
