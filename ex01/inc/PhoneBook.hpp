@@ -13,10 +13,9 @@ class PhoneBook
 	int current;
 
   public:
-	int index;
 	PhoneBook();
 	~PhoneBook();
-	void addContact(Contact contact);
+	int addContact(Contact contact);
 	int printPhoneBook();
 	int printPhoneBook(int index);
 };

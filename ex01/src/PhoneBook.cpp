@@ -6,14 +6,14 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 18:39:29 by enchevri          #+#    #+#             */
-/*   Updated: 2025/12/18 11:15:10 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/12/18 11:17:28 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "phonebook.h"
 
-PhoneBook::PhoneBook() : max(MAX_CONTACT - 1), current(0), index(0)
+PhoneBook::PhoneBook() : max(MAX_CONTACT - 1), current(0)
 {
 }
 
@@ -76,13 +76,15 @@ int PhoneBook::printPhoneBook(int index)
 	return (0);
 }
 
-void PhoneBook::addContact(Contact contact)
+int PhoneBook::addContact(Contact contact)
 {
+	int index;
 	contact.nb = current;
 	if (this->current > this->max)
-		this->index = this->getOlderContact();
+		index = this->getOlderContact();
 	else
-		this->index = current;
-	this->_array[this->index] = contact;
+		index = current;
+	this->_array[index] = contact;
 	this->current++;
+	return (index);
 }

@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 15:35:54 by enchevri          #+#    #+#             */
-/*   Updated: 2025/12/18 11:14:13 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/12/18 11:17:23 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int	add(PhoneBook &phoneBook)
 	if (getInput("Enter your darkest secret\n", darkestSecret) == 1)
 		return (1);
 	Contact contact(firstName, lastName, nickName, phoneNumber, darkestSecret);
-	phoneBook.addContact(contact);
-	std::cout << "Added the contact " << firstName << " to the phonebook at index[" << phoneBook.index << "]\n";
+	int index = phoneBook.addContact(contact);
+	std::cout << "Added the contact " << firstName << " to the phonebook at index[" << index << "]\n";
 	return (0);
 }
 
