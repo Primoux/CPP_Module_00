@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 18:39:29 by enchevri          #+#    #+#             */
-/*   Updated: 2025/12/18 11:17:28 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/12/18 11:28:51 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,18 @@ int PhoneBook::printPhoneBook()
 
 int PhoneBook::printPhoneBook(int index)
 {
+	std::cout << "\n════════════════════════════════════════" << std::endl;
 	if (index < this->current)
 	{
-		std::cout << "\n════════════════════════════════════════" << std::endl;
 		std::cout << "           CONTACT #" << index << std::endl;
 		std::cout << "════════════════════════════════════════" << std::endl;
 		this->_array[index].printContactFull();
-		std::cout << "════════════════════════════════════════\n" << std::endl;
 	}
 	else
 	{
-		std::cout << "\n════════════════════════════════════════" << std::endl;
 		std::cout << "        NO CONTACT #" << index << std::endl;
-		std::cout << "════════════════════════════════════════" << std::endl;
 	}
+	std::cout << "════════════════════════════════════════" << std::endl;
 	return (0);
 }
 
