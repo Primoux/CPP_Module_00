@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 15:35:54 by enchevri          #+#    #+#             */
-/*   Updated: 2025/12/18 10:25:23 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/12/18 11:14:13 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	search(PhoneBook phoneBook)
 	clear();
 	if (phoneBook.printPhoneBook() == 1)
 		return ;
-	std::cout << "Enter the index of the contact [0]-[" << phoneBook.max << "]" << std::endl;
+	std::cout << "Enter the index of the contact [0]-[" << MAX_CONTACT << "]" << std::endl;
 	std::string index;
 	std::getline(std::cin, index);
 	clear();

@@ -1,23 +1,24 @@
 #ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-#include <iostream>
-#include "Contact.hpp"
+# include "Contact.hpp"
+# include <iostream>
 
 class PhoneBook
 {
-	private:
-		Contact _array[8];
-	public:
-		int max;
-		int index;
-		int current;
-		PhoneBook();
-		~PhoneBook();
-		void addContact(Contact contact);
-		int printPhoneBook();
-		int printPhoneBook(int index);
-		int getOlderContact();
-	};
+  private:
+	Contact _array[8];
+	int getOlderContact();
+	int max;
+	int current;
+
+  public:
+	int index;
+	PhoneBook();
+	~PhoneBook();
+	void addContact(Contact contact);
+	int printPhoneBook();
+	int printPhoneBook(int index);
+};
 
 #endif // !PHONEBOOK_HPP
