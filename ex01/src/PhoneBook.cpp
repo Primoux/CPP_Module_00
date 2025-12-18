@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 18:39:29 by enchevri          #+#    #+#             */
-/*   Updated: 2025/12/17 15:22:21 by enzo             ###   ########.fr       */
+/*   Updated: 2025/12/18 10:25:36 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "phonebook.h"
 
-PhoneBook::PhoneBook() : max(8), index(0), current(0)
+PhoneBook::PhoneBook() : max(MAX_CONTACT - 1), index(0), current(0)
 {
 }
 
@@ -42,13 +43,13 @@ int PhoneBook::printPhoneBook()
 {
 	if (this->current == 0)
 	{
-		std::cout << "No contact inside the phone book\n";
+		std::cout << "No contact inside the phone book" << std::endl;
 		return (1);
 	}
 	std::cout << "\n┌──────────┬──────────┬──────────┬──────────┐" << std::endl;
 	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
 	std::cout << "├──────────┼──────────┼──────────┼──────────┤" << std::endl;
-	for (int i = 0; i < this->current; i++)
+	for (int i = 0; i <= this->max; i++)
 	{
 		this->_array[i].printContactRow(i);
 	}
@@ -66,13 +67,22 @@ int PhoneBook::printPhoneBook(int index)
 		this->_array[index].printContactFull();
 		std::cout << "════════════════════════════════════════\n" << std::endl;
 	}
+	else
+	{
+		std::cout << "\n════════════════════════════════════════" << std::endl;
+		std::cout << "        NO CONTACT #" << index << std::endl;
+		std::cout << "════════════════════════════════════════" << std::endl;
+	}
 	return (0);
 }
 
 void PhoneBook::addContact(Contact contact)
 {
+	contact.nb = current;
 	if (this->current > this->max)
 		this->index = this->getOlderContact();
-	this->_array[this->index++] = contact;
+	else
+		this->index = current;
+	this->_array[this->index] = contact;
 	this->current++;
 }

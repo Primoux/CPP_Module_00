@@ -3,33 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 15:35:54 by enchevri          #+#    #+#             */
-/*   Updated: 2025/12/17 15:22:59 by enzo             ###   ########.fr       */
+/*   Updated: 2025/12/18 10:25:23 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "phonebook.h"
 #include <cstdlib>
-#include <iostream>
 #include <sstream>
-#include <stdio.h>
-#include <string>
+
+void	clear(void)
+{
+	std::system("clear");
+}
 
 void	search(PhoneBook phoneBook)
 {
-	int	i;
-
-	std::system("clear");
+	clear();
 	if (phoneBook.printPhoneBook() == 1)
 		return ;
-	std::cout << "Enter the index of the contact [0]-[8]\n";
+	std::cout << "Enter the index of the contact [0]-[" << phoneBook.max << "]" << std::endl;
 	std::string index;
-	std::cin >> index;
-	std::system("clear");
+	std::getline(std::cin, index);
+	clear();
 	std::stringstream ss(index);
-	if ((ss >> i).fail() || !ss.eof())
+	int	i;
+	if (index.empty() || (ss >> i).fail() || !ss.eof())
 	{
 		std::cout << "Invalid index." << std::endl;
 		return ;
@@ -42,52 +44,60 @@ void	search(PhoneBook phoneBook)
 	phoneBook.printPhoneBook(i);
 }
 
+int	getInput(std::string prompt, std::string &str)
+{
+	std::cout << prompt;
+	std::getline(std::cin, str);
+	if (str.empty())
+	{
+		clear();
+		std::cout << "Error\nThe string is empty" << std::endl;
+		return (1);
+	}
+	clear();
+	return (0);
+}
+
 int	add(PhoneBook &phoneBook)
 {
-	std::system("clear");
+	clear();
 	std::string firstName;
-	std::cout << "Enter your first name\n";
-	std::cin >> firstName;
-	std::system("clear");
+	if (getInput("Enter your first name\n", firstName) == 1)
+		return (1);
 	std::string lastName;
-	std::cout << "Enter your last name\n";
-	std::cin >> lastName;
-	std::system("clear");
+	if (getInput("Enter your last name\n", lastName) == 1)
+		return (1);
 	std::string nickName;
-	std::cout << "Enter your nick name\n";
-	std::cin >> nickName;
-	std::system("clear");
+	if (getInput("Enter your nick name\n", nickName) == 1)
+		return (1);
 	std::string phoneNumber;
-	std::cout << "Enter your phone number\n";
-	std::cin >> phoneNumber;
-	std::system("clear");
+	if (getInput("Enter your phone number\n", phoneNumber) == 1)
+		return (1);
 	std::string darkestSecret;
-	std::cout << "Enter your darkest secret\n";
-	std::cin >> darkestSecret;
-	std::system("clear");
+	if (getInput("Enter your darkest secret\n", darkestSecret) == 1)
+		return (1);
 	Contact contact(firstName, lastName, nickName, phoneNumber, darkestSecret);
 	phoneBook.addContact(contact);
-	std::cout << "Added the contact " << firstName << " to the phonebook\n";
+	std::cout << "Added the contact " << firstName << " to the phonebook at index[" << phoneBook.index << "]\n";
 	return (0);
 }
 
 int	main(void)
 {
-	PhoneBook	phoneBook;
-
+	clear();
 	if (!std::cout.good())
 		return (1);
-	std::string str;
-	std::system("clear");
-	std::cout << "'ADD' to add a contact\n'SEARCH' to enter the search mod\n'EXIT' to exit the program\n";
-	while (std::cin >> str && str != "EXIT")
+	PhoneBook	phoneBook;
+	std::cout << MENU_MSG;
+	std::string	str;
+	while (std::getline(std::cin, str) && str != "EXIT")
 	{
-		std::system("clear");
+		clear();
 		if (str == "ADD")
 			add(phoneBook);
 		else if (str == "SEARCH")
 			search(phoneBook);
-		std::cout << "'ADD' to add a contact\n'SEARCH' to enter the search mod\n'EXIT' to exit the program\n";
+		std::cout << MENU_MSG;
 	}
 	std::cout << "Exiting...\n";
 }
