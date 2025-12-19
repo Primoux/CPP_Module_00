@@ -1,7 +1,10 @@
 # Executables
-
+megaphone
+phoneBook
 # Build artifacts
 */.build/*
 
 # IDE/Editor
+compile_commands.json
+*/.cache/*
 .vscode/
