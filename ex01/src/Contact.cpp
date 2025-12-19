@@ -6,11 +6,12 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 16:50:09 by enchevri          #+#    #+#             */
-/*   Updated: 2025/12/17 14:17:35 by enzo             ###   ########.fr       */
+/*   Updated: 2025/12/19 19:01:45 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+#include <iomanip>
 
 Contact::Contact(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber,std::string darkestSecret)
 {
