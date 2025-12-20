@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 16:50:09 by enchevri          #+#    #+#             */
-/*   Updated: 2025/12/19 19:01:45 by enzo             ###   ########.fr       */
+/*   Updated: 2025/12/20 15:08:10 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include <iomanip>
+#include <iostream>
 
 Contact::Contact(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber,std::string darkestSecret)
 {
@@ -31,7 +32,7 @@ std::string Contact::truncate(std::string str, size_t width)
 
 void Contact::printContactRow(int index)
 {
-	std::cout << "|" << std::setw(10) << index;
+	std::cout << "|" << std::setw(10) << index + 1;
 	std::cout << "|" << std::setw(10) << truncate(this->_firstName, 10);
 	std::cout << "|" << std::setw(10) << truncate(this->_lastName, 10);
 	std::cout << "|" << std::setw(10) << truncate(this->_nickName, 10);

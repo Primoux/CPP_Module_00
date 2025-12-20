@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 15:35:54 by enchevri          #+#    #+#             */
-/*   Updated: 2025/12/18 11:17:23 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2025/12/20 15:14:13 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "phonebook.h"
 #include <cstdlib>
 #include <sstream>
+#include <iostream>
 
 void	clear(void)
 {
@@ -25,7 +26,7 @@ void	search(PhoneBook phoneBook)
 	clear();
 	if (phoneBook.printPhoneBook() == 1)
 		return ;
-	std::cout << "Enter the index of the contact [0]-[" << MAX_CONTACT << "]" << std::endl;
+	std::cout << "Enter the index of the contact [1]-[" << MAX_CONTACT << "]" << std::endl;
 	std::string index;
 	std::getline(std::cin, index);
 	clear();
@@ -36,12 +37,12 @@ void	search(PhoneBook phoneBook)
 		std::cout << "Invalid index." << std::endl;
 		return ;
 	}
-	if (i < 0 || i > 8)
+	if (i < 1 || i > 8)
 	{
 		std::cout << "Index out of range." << std::endl;
 		return ;
 	}
-	phoneBook.printPhoneBook(i);
+	phoneBook.printPhoneBook(i - 1);
 }
 
 int	getInput(std::string prompt, std::string &str)
@@ -51,7 +52,7 @@ int	getInput(std::string prompt, std::string &str)
 	if (str.empty())
 	{
 		clear();
-		std::cout << "Error\nThe string is empty" << std::endl;
+		std::cout << "Error\nThe string is empty\n" << std::endl;
 		return (1);
 	}
 	clear();
@@ -77,8 +78,7 @@ int	add(PhoneBook &phoneBook)
 	if (getInput("Enter your darkest secret\n", darkestSecret) == 1)
 		return (1);
 	Contact contact(firstName, lastName, nickName, phoneNumber, darkestSecret);
-	int index = phoneBook.addContact(contact);
-	std::cout << "Added the contact " << firstName << " to the phonebook at index[" << index << "]\n";
+	phoneBook.addContact(contact);
 	return (0);
 }
 
