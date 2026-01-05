@@ -2,14 +2,14 @@
 # define PHONEBOOK_HPP
 
 # include "Contact.hpp"
+# include "phonebook.h"
 
 class PhoneBook
 {
   private:
-	Contact _array[8];
-	int getOlderContact();
-	int max;
-	int current;
+	Contact _array[MAX_CONTACT];
+	int 	max;
+	int 	current;
 
   public:
 	PhoneBook();

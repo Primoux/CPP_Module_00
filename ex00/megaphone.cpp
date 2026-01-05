@@ -6,31 +6,30 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 08:49:11 by enchevri          #+#    #+#             */
-/*   Updated: 2025/12/18 10:38:59 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/01/05 16:47:16 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
+using std::endl;
+
 int	main(int argc, char **argv)
 {
-	if (!std::cout.good())
-		return (1);
 	if (argc == 1)
 	{
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return (0);
 	}
-	for (int i = 1; argv[i]; i++)
+	for (int i = 1; i < argc; ++i)
 	{
-		std::string str = argv[i];
-		if (!str.empty())
+		int y = 0;
+		while (argv[i][y])
 		{
-			for (size_t i = 0; i < str.size(); i++)
-				str[i] = std::toupper(str[i]);
-			std::cout << str;
+			std::cout << static_cast<char>(std::toupper(argv[i][y])) ;
+			++y;
 		}
 	}
-	std::cout << std::endl;
+	std::cout << endl;
 	return (0);
 }
