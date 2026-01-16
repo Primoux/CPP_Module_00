@@ -6,12 +6,12 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 18:39:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/05 17:26:24 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/01/16 10:44:32 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include "phonebook.h"
+#include "define.h"
 #include <iostream>
 
 PhoneBook::PhoneBook() : max(MAX_CONTACT - 1), current(0)
