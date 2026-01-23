@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 08:49:11 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/05 16:47:16 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/01/16 15:28:08 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 {
 	if (argc == 1)
 	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << endl;
 		return (0);
 	}
 	for (int i = 1; i < argc; ++i)

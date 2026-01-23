@@ -6,18 +6,19 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 15:35:54 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/16 10:44:24 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/01/23 12:13:17 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "define.h"
-#include <cstdio>
 #include <cstdlib>
-#include <ostream>
 #include <sstream>
 #include <iostream>
 #include <string>
+
+using std::endl;
+using std::string;
 
 void	clearTerm(void)
 {
@@ -29,26 +30,26 @@ void	search(PhoneBook phoneBook)
 	clearTerm();
 	if (phoneBook.printPhoneBook() == 1)
 		return ;
-	std::cout << "Enter the index of the contact [1]-[" << MAX_CONTACT << "]" << std::endl;
-	std::string index;
+	std::cout << "Enter the index of the contact [1]-[" << MAX_CONTACT << "]" << endl;
+	string index;
 	std::getline(std::cin, index);
 	clearTerm();
 	std::stringstream ss(index);
 	int	i;
 	if (index.empty() || (ss >> i).fail() || !ss.eof())
 	{
-		std::cout << "Invalid index\n" << std::endl;
+		std::cout << "Invalid index\n" << endl;
 		return ;
 	}
 	if (i < 1 || i > MAX_CONTACT)
 	{
-		std::cout << "Index out of range\n" << std::endl;
+		std::cout << "Index out of range\n" << endl;
 		return ;
 	}
 	phoneBook.printPhoneBook(i - 1);
 }
 
-int	getInput(std::string prompt, std::string &str)
+int	getInput(string prompt, string &str)
 {
 	std::cout << prompt;
 	while (std::getline(std::cin, str))
@@ -56,7 +57,7 @@ int	getInput(std::string prompt, std::string &str)
 		if (!str.empty())
 			break;
 		clearTerm();
-		std::cout << "Error\nThe string is empty\n" << std::endl;
+		std::cout << "Error\nThe string is empty\n" << endl;
 		std::cout << prompt;
 	}
 	clearTerm();
@@ -66,19 +67,19 @@ int	getInput(std::string prompt, std::string &str)
 int	add(PhoneBook &phoneBook)
 {
 	clearTerm();
-	std::string firstName;
+	string firstName;
 	if (getInput("Enter your first name\n\n- ", firstName) == 1)
 		return (1);
-	std::string lastName;
+	string lastName;
 	if (getInput("Enter your last name\n\n- ", lastName) == 1)
 		return (1);
-	std::string nickName;
+	string nickName;
 	if (getInput("Enter your nick name\n\n- ", nickName) == 1)
 		return (1);
-	std::string phoneNumber;
+	string phoneNumber;
 	if (getInput("Enter your phone number\n\n- ", phoneNumber) == 1)
 		return (1);
-	std::string darkestSecret;
+	string darkestSecret;
 	if (getInput("Enter your darkest secret\n\n- ", darkestSecret) == 1)
 		return (1);
 	Contact contact(firstName, lastName, nickName, phoneNumber, darkestSecret);
@@ -91,7 +92,7 @@ int	main(void)
 	clearTerm();
 	PhoneBook	phoneBook;
 	std::cout << MENU_MSG;
-	std::string	str;
+	string	str;
 	while (std::getline(std::cin, str) && str != "EXIT")
 	{
 		clearTerm();
@@ -99,7 +100,7 @@ int	main(void)
 		{
 			if (add(phoneBook) == 1)
 			{
-				std::cout << ERROR_MSG << std::endl;
+				std::cout << ERROR_MSG << endl;
 				return (1);
 			}
 		}
@@ -107,5 +108,5 @@ int	main(void)
 			search(phoneBook);
 		std::cout << MENU_MSG;
 	}
-	std::cout << "Exiting...\n";
+	std::cout << "Exiting..." << endl;
 }
